@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장유안입니다</title>
+    <style>
+        body {
+            font-family: 'Apple SD Gothic Neo', 'Pretendard', sans-serif;
+            background: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%); /* 화사한 파스텔톤 그라데이션 */
+            color: #333;
+            margin: 0;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            width: 100%;
+            max-width: 800px; 
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 130px; 
+            height: 130px; 
+            border-radius: 50%;
+            object-fit: cover; 
+            border: 5px solid #5c6bc0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 20px auto; 
+            display: block; 
+        }
+
+        .profile-header h1 {
+            color: #2c3e50;
+            font-size: 2.8rem;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .profile-header .meaning {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .badge-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px; 
+        }
+
+        .badge {
+            background-color: #f0f4f8;
+            color: #5c6bc0;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        hr {
+            border: 0;
+            height: 1px;
+            background-color: #e2e8f0;
+            margin: 40px 0;
+        }
+
+        h2 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+        }
+
+        .hobby-card {
+            background-color: #ffffff;
+            border: 1px solid #edf2f7;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease; 
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .hobby-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .hobby-title h3 {
+            margin: 0;
+            color: #34495e;
+            font-size: 1.3rem;
+        }
+
+        .hobby-icon {
+            width: 35px;
+            height: 35px;
+            object-fit: contain;
+        }
+
+        .hobby-list h4 {
+            color: #5c6bc0;
+            margin: 0 0 15px 0;
+            font-size: 1.05rem;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #edf2f7; 
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        li:last-child {
+            border-bottom: none; 
+        }
+
+        .list-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+
+        .month {
+            font-weight: bold;
+            color: #2c3e50;
+            min-width: 35px; 
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .hobbies-grid {
+                grid-template-columns: 1fr; 
+            }
+            .container {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <img src="./images/profile.png" alt="장유안 프로필 이미지" class="profile-img">
+            <h1>장유안</h1>
+            <div class="meaning">깨우칠 喩, 편안할 安</div>
+            <div class="badge-container">
+                <div class="badge">MBTI: INTP</div>
+                <div class="badge">혈액형: A형</div>
+            </div>
+        </div>
+
+        <hr>
+
+        <h2>취미 생활</h2>
+        <div class="hobbies-grid">
+            
+            <div class="hobby-card">
+                <div class="hobby-title">
+                    <img src="./images/music.png" alt="음악" class="hobby-icon">
+                    <h3>음악</h3>
+                </div>
+                <div class="hobby-list">
+                    <h4>월별 가장 많이 들은 음악</h4>
+                    <ul>
+                        <li><span class="month">1월</span> NASA - Ariana Grande</li>
+                        <li><span class="month">2월</span> 안녕 - 샤이니</li>
+                        <li><span class="month">3월</span> Mosaic - off the menu</li>
+                        <li><span class="month">4월</span> Super Shy - 뉴진스</li>
+                        <li><span class="month">5월</span> 사랑의 꿈, S.541 - 프란츠 리스트</li>
+                        <li><span class="month">6월</span> Happier Than Ever - Billie Eilish</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="hobby-card">
+                <div class="hobby-title">
+                    <img src="./images/game.png" alt="게임" class="hobby-icon">
+                    <h3>게임</h3>
+                </div>
+                <div class="hobby-list">
+                    <h4>즐겨하는 게임</h4>
+                    <ul>
+                        <li>
+                            <img src="./images/zelda.jpg" alt="젤다" class="list-icon"> 
+                            젤다의 전설 야생의 숨결
+                        </li>
+                        <li>
+                            <img src="./images/sp.jpg" alt="스플래툰" class="list-icon"> 
+                            스플래툰
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
