@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장유안입니다</title>
+    <style>
+        /* 기본 리셋 및 폰트 설정 */
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            color: #333;
+            margin: 0;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+            word-break: keep-all;
+        }
+
+        /* 메인 컨테이너 */
+        .container {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 900px;
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1), 
+                        inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        }
+
+        /* 프로필 헤더 */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 140px; 
+            height: 140px; 
+            border-radius: 50%;
+            object-fit: cover; 
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px rgba(92, 107, 192, 0.3);
+            margin: 0 auto 25px auto; 
+            display: block; 
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(3deg);
+        }
+
+        .profile-header h1 {
+            color: #1e293b;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 0 0 8px 0;
+            letter-spacing: 1px;
+        }
+
+        .profile-header .meaning {
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* 버튼 컨테이너 (기존 뱃지 스타일을 버튼으로 활용) */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px; 
+        }
+
+        .nav-buttons a {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(118, 75, 162, 0.2);
+            letter-spacing: 0.5px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-buttons a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(118, 75, 162, 0.4);
+        }
+
+        hr {
+            border: 0;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #e2e8f0, transparent);
+            margin: 45px 0;
+        }
+
+        /* 공통 카드 스택 (세로 배치) */
+        .hobbies-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 35px; 
+        }
+
+        .hobby-card {
+            background-color: #ffffff;
+            border-radius: 24px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); 
+            border: 1px solid rgba(226, 232, 240, 0.6);
+            scroll-margin-top: 40px; /* 앵커 이동 시 여백 확보 */
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+            border-color: #cbd5e1;
+        }
+
+        /* 카드 타이틀 */
+        .hobby-title {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 18px;
+            margin-bottom: 25px;
+        }
+
+        .hobby-icon {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            background-color: #f8fafc;
+            padding: 10px;
+            border-radius: 14px;
+        }
+
+        .hobby-title h3 {
+            margin: 0;
+            color: #334155;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .hobby-list h4 {
+            color: #5c6bc0;
+            margin: 0 0 20px 0;
+            font-size: 1.05rem;
+            font-weight: 600;
+        }
+
+        ul { list-style: none; padding: 0; margin: 0; }
+
+        /* 소개란 섹션 스타일 */
+        .intro-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .intro-content .intro-item {
+            background-color: #f8fafc;
+            padding: 16px 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            color: #475569;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .intro-content .intro-item strong {
+            color: #5c6bc0;
+            min-width: 70px;
+            margin-right: 10px;
+        }
+
+        /* 1. 음악 리스트 */
+        .music-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: repeat(3, auto);
+            grid-auto-flow: column; 
+            gap: 10px 40px; 
+        }
+        
+        .music-list li {
+            padding: 12px 10px;
+            border-bottom: 1px dashed #e2e8f0; 
+            color: #475569;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: background-color 0.2s ease;
+            border-radius: 8px;
+        }
+        .music-list li:hover { background-color: #f8fafc; }
+        .music-list .list-icon {
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            margin-left: auto;
+        }
+        .month {
+            font-weight: 700;
+            color: #5c6bc0;
+            min-width: 35px; 
+        }
+
+        /* 2. 게임 & 영화 공통 갤러리 스타일 */
+        .gallery-list {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .gallery-list li {
+            background-color: #f8fafc;
+            border-radius: 16px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+            color: #334155;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .gallery-list li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+            background-color: #fff;
+            border: 1px solid #e2e8f0;
+        }
+
+        .gallery-list .list-icon {
+            width: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+
+        /* 게임 리스트 */
+        .game-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .game-list .list-icon {
+            aspect-ratio: 16 / 9;
+        }
+
+        /* 영화 리스트 */
+        .movie-list {
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .movie-list .list-icon {
+            aspect-ratio: 2 / 3;
+        }
+        .movie-list li {
+            font-size: 0.9rem;
+            padding: 12px;
+        }
+
+        /* 모바일 반응형 처리 */
+        @media (max-width: 768px) {
+            .container { padding: 40px 20px; border-radius: 20px; }
+            .hobby-card { padding: 25px; }
+            
+            /* 모바일 소개란 1열 정렬 */
+            .intro-content { grid-template-columns: 1fr; }
+
+            .music-list { 
+                grid-template-columns: 1fr; 
+                grid-auto-flow: row;
+            }
+            .game-list { grid-template-columns: 1fr; }
+            .movie-list { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="profile-header">
+            <img src="./images/profile.png" alt="장유안 프로필 이미지" class="profile-img">
+            <h1>장유안</h1>
+            <div class="meaning">깨우칠 喩, 편안할 安</div>
+            
+            <!-- 수정 1번: 내비게이션 버튼 5개 -->
+            <nav class="nav-buttons">
+                <a href="#intro">소개</a>
+                <a href="#music">음악</a>
+                <a href="#movie">영화</a>
+                <a href="#game">게임</a>
+                <a href="./rock-paper-scissors-game/index.html">가위바위보게임</a>
+            </nav>
+        </div>
+
+        <hr>
+
+        <!-- 1열 스택 컨테이너 -->
+        <div class="hobbies-stack">
+            
+            <!-- 수정 3번: 소개 섹션 새로 추가 -->
+            <div class="hobby-card" id="intro">
+                <div class="hobby-title">
+                    <!-- 아이콘이 없다면 임시로 프로필 이미지를 쓰거나, 지우셔도 됩니다 -->
+                    <h3>소개</h3>
+                </div>
+                <div class="intro-content">
+                    <div class="intro-item"><strong>MBTI</strong> INTP</div>
+                    <div class="intro-item"><strong>혈액형</strong> A형</div>
+                    <div class="intro-item"><strong>별자리</strong> 물병자리</div>
+                    <div class="intro-item"><strong>전공</strong> 경제통상학부</div>
+                </div>
+            </div>
+
+            <!-- 음악 -->
+            <div class="hobby-card" id="music">
+                <div class="hobby-title">
+                    <img src="./images/music.png" alt="음악" class="hobby-icon">
+                    <h3>음악</h3>
+                </div>
+                <div class="hobby-list">
+                    <h4>월별 가장 많이 들은 음악</h4>
+                    <ul class="music-list">
+                        <li><span class="month">1월</span> NASA - Ariana Grande <img src="./images/ari.jpg" alt="NASA" class="list-icon"></li>
+                        <li><span class="month">2월</span> 안녕 - 샤이니 <img src="./images/shinee.jpg" alt="shinee" class="list-icon"></li>
+                        <li><span class="month">3월</span> Mosaic - off the menu <img src="./images/offthemenu.jpg" alt="mosaic" class="list-icon"></li>
+                        <li><span class="month">4월</span> Super Shy - 뉴진스 <img src="./images/supershy.jpg" alt="newjeans" class="list-icon"></li>
+                        <li><span class="month">5월</span> 사랑의 꿈 - 프란츠 리스트 <img src="./images/liszt.jpg" alt="liszt" class="list-icon"></li>
+                        <li><span class="month">6월</span> Happier Than Ever - Billie Eilish <img src="./images/billie.jpg" alt="happy" class="list-icon"></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 영화 (순서를 버튼 순서와 맞추어 영화를 위로 올렸습니다) -->
+            <div class="hobby-card" id="movie">
+                <div class="hobby-title">
+                    <img src="./images/movie.png" alt="영화" class="hobby-icon">
+                    <h3>영화</h3>
+                </div>
+                <div class="hobby-list">
+                    <h4>인생 영화</h4>
+                    <ul class="gallery-list movie-list">
+                        <li>
+                            <img src="./images/jojo.jpg" alt="조조" class="list-icon"> 
+                            조조 래빗
+                        </li>
+                        <li>
+                            <img src="./images/arrival.jpg" alt="어라이벌" class="list-icon"> 
+                            컨택트 (Arrival)
+                        </li>
+                        <li>
+                            <img src="./images/theprestige.jpg" alt="프레스티지" class="list-icon"> 
+                            프레스티지
+                        </li>
+                        <li>
+                            <img src="./images/gore.jpg" alt="아무도 모른다" class="list-icon"> 
+                            아무도 모른다
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 게임 -->
+            <div class="hobby-card" id="game">
+                <div class="hobby-title">
+                    <img src="./images/game.png" alt="게임" class="hobby-icon">
+                    <h3>게임</h3>
+                </div>
+                <div class="hobby-list">
+                    <h4>즐겨하는 게임</h4>
+                    <ul class="gallery-list game-list">
+                        <li>
+                            <img src="./images/zelda.jpg" alt="젤다" class="list-icon"> 
+                            젤다의 전설 야생의 숨결
+                        </li>
+                        <li>
+                            <img src="./images/sp.jpg" alt="스플래툰" class="list-icon"> 
+                            스플래툰
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
