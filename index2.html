@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>장유안입니다</title>
     <style>
-        /* 기본 리셋 및 폰트 설정 */
         body {
             font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', sans-serif;
             background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
@@ -20,7 +19,6 @@
             word-break: keep-all;
         }
 
-        /* 메인 컨테이너 */
         .container {
             background-color: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(15px);
@@ -33,7 +31,6 @@
                         inset 0 0 0 1px rgba(255, 255, 255, 0.5);
         }
 
-        /* 프로필 헤더 */
         .profile-header {
             text-align: center;
             margin-bottom: 40px;
@@ -70,7 +67,6 @@
             font-weight: 500;
         }
 
-        /* 버튼 컨테이너 (기존 뱃지 스타일을 버튼으로 활용) */
         .nav-buttons {
             display: flex;
             justify-content: center;
@@ -103,7 +99,6 @@
             margin: 45px 0;
         }
 
-        /* 공통 카드 스택 (세로 배치) */
         .hobbies-stack {
             display: flex;
             flex-direction: column;
@@ -126,7 +121,6 @@
             border-color: #cbd5e1;
         }
 
-        /* 카드 타이틀 */
         .hobby-title {
             display: flex;
             align-items: center;
@@ -161,7 +155,6 @@
 
         ul { list-style: none; padding: 0; margin: 0; }
 
-        /* 소개란 섹션 스타일 */
         .intro-content {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -185,7 +178,6 @@
             margin-right: 10px;
         }
 
-        /* 1. 음악 리스트 */
         .music-list {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -220,7 +212,6 @@
             min-width: 35px; 
         }
 
-        /* 2. 게임 & 영화 공통 갤러리 스타일 */
         .gallery-list {
             display: grid;
             gap: 20px;
@@ -255,7 +246,6 @@
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
 
-        /* 게임 리스트 */
         .game-list {
             grid-template-columns: repeat(2, 1fr);
         }
@@ -263,7 +253,6 @@
             aspect-ratio: 16 / 9;
         }
 
-        /* 영화 리스트 */
         .movie-list {
             grid-template-columns: repeat(4, 1fr);
         }
@@ -275,12 +264,10 @@
             padding: 12px;
         }
 
-        /* 모바일 반응형 처리 */
         @media (max-width: 768px) {
             .container { padding: 40px 20px; border-radius: 20px; }
             .hobby-card { padding: 25px; }
             
-            /* 모바일 소개란 1열 정렬 */
             .intro-content { grid-template-columns: 1fr; }
 
             .music-list { 
@@ -299,7 +286,6 @@
             <h1>장유안</h1>
             <div class="meaning">깨우칠 喩, 편안할 安</div>
             
-            <!-- 수정 1번: 내비게이션 버튼 5개 -->
             <nav class="nav-buttons">
                 <a href="#intro">소개</a>
                 <a href="#music">음악</a>
@@ -311,13 +297,10 @@
 
         <hr>
 
-        <!-- 1열 스택 컨테이너 -->
         <div class="hobbies-stack">
             
-            <!-- 수정 3번: 소개 섹션 새로 추가 -->
             <div class="hobby-card" id="intro">
                 <div class="hobby-title">
-                    <!-- 아이콘이 없다면 임시로 프로필 이미지를 쓰거나, 지우셔도 됩니다 -->
                     <h3>소개</h3>
                 </div>
                 <div class="intro-content">
@@ -328,7 +311,6 @@
                 </div>
             </div>
 
-            <!-- 음악 -->
             <div class="hobby-card" id="music">
                 <div class="hobby-title">
                     <img src="./images/music.png" alt="음악" class="hobby-icon">
@@ -347,7 +329,6 @@
                 </div>
             </div>
 
-            <!-- 영화 (순서를 버튼 순서와 맞추어 영화를 위로 올렸습니다) -->
             <div class="hobby-card" id="movie">
                 <div class="hobby-title">
                     <img src="./images/movie.png" alt="영화" class="hobby-icon">
@@ -376,7 +357,6 @@
                 </div>
             </div>
 
-            <!-- 게임 -->
             <div class="hobby-card" id="game">
                 <div class="hobby-title">
                     <img src="./images/game.png" alt="게임" class="hobby-icon">
